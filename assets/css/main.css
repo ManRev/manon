@@ -130,7 +130,7 @@ input, select, textarea {
 	}
 
 	p {
-		margin: 0 0 1em 0;
+		margin: 4em 4em 1em 0;
 		text-align: justify
 	}
 
@@ -2908,7 +2908,7 @@ input, select, textarea {
 		/* Main */
 
 			#main > section > .container {
-				padding: 4em 0 2em 0;
+				padding: 4em 4em 2em 0;
 			}
 
 	}
