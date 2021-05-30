@@ -130,7 +130,7 @@ input, select, textarea {
 	}
 
 	p {
-		margin: 4em 4em 1em 0;
+		margin: 1em 1em 0 0;
 		text-align: justify
 	}
 
@@ -139,6 +139,8 @@ input, select, textarea {
 		font-weight: 700;
 		line-height: 1em;
 		margin: 0 0 0.5625em 0;
+		margin-bottom: 0;
+		margin-top: 1em;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -2227,7 +2229,7 @@ input, select, textarea {
 
 	ul {
 		list-style: disc;
-		margin: 0 0 2.25em 0;
+		margin: 0 0 1em 1em;
 		padding-left: 1em;
 	}
 
