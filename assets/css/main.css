@@ -1713,9 +1713,9 @@ input, select, textarea {
 	.container {
 		margin-top:0;
 		margin-bottom:0;
-		margin-left:5%;
-		margin-right:5%;
-		max-width: calc(100% - 4.5em);
+		margin-left: 5%;
+		margin-right: 5%;
+		max-width: calc(100%);
 	}
 
 		.container.xsmall {
