@@ -131,6 +131,7 @@ input, select, textarea {
 
 	p {
 		margin: 1em 1em 0 0;
+		white-space: normal;
 		text-align: justify
 	}
 
@@ -1745,7 +1746,7 @@ input, select, textarea {
 		@media screen and (max-width: 1024px) {
 
 			.container {
-				width: 100% !important;
+				width: 90% !important;
 			}
 
 		}
@@ -2174,12 +2175,14 @@ input, select, textarea {
 			float: left;
 			margin: 0 1.5em 0.75em 0;
 			top: 0.25em;
+			max-width: 20em;
 		}
 
 		.image.right {
 			float: right;
 			margin: 0 0 2em 2.5em;
 			top: 0.25em;
+			max-width: 20em;
 		}
 
 		.image.fit {
@@ -2909,7 +2912,7 @@ input, select, textarea {
 		/* Main */
 
 			#main > section > .container {
-				padding: 4em 4em 2em 0;
+				padding: 2em 0em 2em 0;
 			}
 
 	}
@@ -2959,11 +2962,13 @@ input, select, textarea {
 		/* Image */
 
 			.image.left, .image.right {
-				max-width: 40%;
+				max-height: 100%;
+				width: auto;
 			}
 
 				.image.left img, .image.right img {
-					width: 100%;
+					height: 100%;
+					width: auto;
 				}
 
 			.image.main {
@@ -3142,7 +3147,8 @@ input, select, textarea {
 
 			.image.left {
 				margin: 0 1.5em 1em 0;
-				height: 3em
+				max-width: 50%;
+				height: auto;
 			}
 
 			.image.right {
@@ -3416,3 +3422,5 @@ input, select, textarea {
   from {opacity: .4}
   to {opacity: 1}
 }
+
+
