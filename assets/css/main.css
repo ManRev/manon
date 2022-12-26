@@ -3688,3 +3688,15 @@ iframe {
   flex-direction: column;
 }
 
+
+/* Style for phone screens */
+@media only screen and (max-width: 767px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  iframe {
+    height: 100%;
+    width: 100%;
+  }
+}
