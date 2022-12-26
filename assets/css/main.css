@@ -3672,3 +3672,19 @@ input, select, textarea {
             }
         }
 
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+iframe {
+  height: 200px;
+  width: 200px;
+  border:10px solid white
+}
+
+.video-container {
+  display: flex;
+  flex-direction: column;
+}
+
