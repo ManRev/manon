@@ -3689,6 +3689,11 @@ iframe {
 }
 
 
+.caption {
+  max-height: 100px;
+  overflow: scroll;
+}
+
 /* Style for phone screens */
 @media only screen and (max-width: 767px) {
   .video-grid {
