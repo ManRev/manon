@@ -56,7 +56,27 @@
 						<!-- One -->
 							<section id="one">
 								<div class="image main" data-position="center">
-									<img src="images/DALLE.png" alt="" />
+									<!-- <img src="images/DALLE.png" alt="" /> -->
+									<img id="randomImage" alt="" />
+										<script>
+										  // Array of image sources
+										  var images = [
+										    'images/DALLE.png',
+										    'images/D2.png',
+										    'images/D3.png',
+										    'images/boston.png',
+										    // Add more image sources as needed
+										  ];
+										
+										  // Get a random index from the images array
+										  var randomIndex = Math.floor(Math.random() * images.length);
+										
+										  // Get the <img> element by its id
+										  var imgElement = document.getElementById('randomImage');
+										
+										  // Set the src attribute to the randomly selected image source
+										  imgElement.src = images[randomIndex];
+										</script>
 								</div>
 								<div class="container">
 									<header class="major">
