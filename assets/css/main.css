@@ -3689,7 +3689,7 @@ iframe {
   flex-direction: column;
 }*/
 
-.video-container {
+/* .video-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -3698,11 +3698,34 @@ iframe {
 }
 
 iframe {
-    max-width: 100%; /* Make sure the video doesn't exceed the container width */
+    max-width: 100%; 
+}
+
+.caption {
+    margin-top: 10px;
+}
+*/
+
+.video-container {
+    position: relative;
+    text-align: center;
+}
+
+iframe {
+    width: 100%; /* Make the video fill the container */
+    height: 100%; /* Make the video fill the container */
 }
 
 .caption {
     margin-top: 10px; /* Adjust the space between the video and the caption */
+    font-size: 14px; /* Adjust the font size of the caption */
+}
+
+/* Additional styling for better aesthetics */
+.video-container::before {
+    content: '';
+    display: block;
+    padding-top: 56.25%; /* 16:9 aspect ratio for responsive videos */
 }
 
 /*.caption {
