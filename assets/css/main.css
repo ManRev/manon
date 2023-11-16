@@ -3683,30 +3683,31 @@ iframe {
   border:10px solid white
 }
 
-.video-container {
+/*.video-container {
   display: flex;
   flex-direction: column;
-}
+}*/
 
-.thumbnail-placeholder {
-    background-color: transparent;
-    width: 100px; /* Adjust the width to make the placeholder smaller */
-    height: 50px; /* Adjust the height to make the placeholder smaller */
-    border: 1px solid #ddd; /* Optional: Add a border for visibility */
-    position: absolute;
-    top: 50%; /* Center the placeholder vertically */
-    left: 50%; /* Center the placeholder horizontally */
-    transform: translate(-50%, -50%);
+.video-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
+iframe {
+    max-width: 100%; /* Make sure the video doesn't exceed the container width */
+}
 
 .caption {
+    margin-top: 10px; /* Adjust the space between the video and the caption */
+}
+
+/*.caption {
   max-height: 100px;
   overflow: scroll;
-}
+}*/
 
 /* Style for phone screens */
 @media only screen and (max-width: 767px) {
@@ -3714,8 +3715,8 @@ iframe {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  iframe {
+ /* iframe {
     height: 100%;
     width: 100%;
-  }
+  }*/
 }
