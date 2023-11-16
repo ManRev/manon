@@ -3675,12 +3675,12 @@ input, select, textarea {
 .video-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-   gap: 20px 50px; 
+   gap: 50px; 
 }
 
 iframe {
-  height: 200px;
-  width: 200px;
+  height: 500px;
+  width: 500px;
   border:10px solid white
 }
 
