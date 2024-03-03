@@ -3672,11 +3672,50 @@ input, select, textarea {
             }
         }
 
+/* CSS for video containers */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    grid-row-gap: 10px; /* Adjust the gap between rows */
+}
+
+.video-container {
+    position: relative;
+    margin-bottom: 1px; /* Gap between rows */
+}
+
+.video-container iframe,
+.video-container img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Ensures images maintain aspect ratio */
+}
+
+.caption {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Ensures images in video containers are square */
+.video-container img {
+    width: 180px !important;
+    height: 158px !important;
+}
+
+/* Adjust the gap between rows by pulling them closer together */
+.video-grid .video-container:nth-child(n+5) {
+    margin-top: -100px; /* Adjust the value as needed */
+}
+
+/* 
 .video-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 50px;
-}
+} */
 
 iframe {
   height: 500px;
