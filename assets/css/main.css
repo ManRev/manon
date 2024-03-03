@@ -167,8 +167,9 @@ input, select, textarea {
 	}
 
 	h5 {
-		font-size: 0.9em;
+		font-size: 1.5em;
 		line-height: 1.5em;
+		color: #4acaa8;
 	}
 
 	h6 {
@@ -3741,4 +3742,29 @@ iframe {
 /* Adjust the gap between rows by pulling them closer together */
 .video-grid .video-container:nth-child(n+5) {
     margin-top: -100px; /* Adjust the value as needed */
+}
+
+/* CSS for teaching section */
+.teaching-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.teaching-item {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.teaching-item h4 {
+    margin-top: 0;
+}
+
+.file-buttons {
+    margin-top: 10px;
+}
+
+.file-buttons .button {
+    margin-right: 10px;
 }
