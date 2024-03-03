@@ -3424,7 +3424,6 @@ input, select, textarea {
 }
 
 
-
 /*==================================
     TIMELINE
 ==================================*/
@@ -3455,7 +3454,7 @@ input, select, textarea {
 /*----- TIMELINE INFO -----*/
 
 .timeline-info {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 3px;
   margin: 0 0 .5em 0;
@@ -3672,6 +3671,41 @@ input, select, textarea {
             }
         }
 
+
+
+
+iframe {
+  height: 200px;
+  width: 500px;
+  border:10px solid white
+}
+
+.video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 500px;
+}
+
+
+.caption {
+  max-height: 100px;
+  overflow: scroll;
+}
+
+/* Style for phone screens */
+@media only screen and (max-width: 767px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  iframe {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+/* CSS for video containers */
 .video-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -3704,23 +3738,7 @@ input, select, textarea {
     height: 158px !important;
 }
 
-.video-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-iframe {
-    width: 100%; /* Let iframes inherit width from grid layout */
-    height: auto; /* Let iframes adjust height based on aspect ratio */
-    border: 10px solid white;
-}
-
-/* Style for phone screens */
-@media only screen and (max-width: 767px) {
-    .video-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* Adjust the gap between rows by pulling them closer together */
+.video-grid .video-container:nth-child(n+5) {
+    margin-top: -100px; /* Adjust the value as needed */
 }
