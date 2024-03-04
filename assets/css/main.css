@@ -2839,7 +2839,7 @@ input, select, textarea {
 	}
 
 		#main > section > .container {
-			padding: 6em 0 4em 0;
+			padding: 3em 0 4em 0;
 		}
 
 		#main > section:first-child {
@@ -3674,38 +3674,6 @@ input, select, textarea {
 
 
 
-
-iframe {
-  height: 200px;
-  width: 500px;
-  border:10px solid white
-}
-
-.video-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 500px;
-}
-
-
-.caption {
-  max-height: 100px;
-  overflow: scroll;
-}
-
-/* Style for phone screens */
-@media only screen and (max-width: 767px) {
-  .video-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  iframe {
-    height: 100%;
-    width: 100%;
-  }
-}
-
 /* CSS for video containers */
 .video-grid {
     display: grid;
@@ -3744,6 +3712,19 @@ iframe {
     margin-top: -100px; /* Adjust the value as needed */
 }
 
+/* Style for phone screens */
+@media only screen and (max-width: 767px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .video-container iframe {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+
 /* CSS for teaching section */
 .teaching-grid {
     display: grid;
@@ -3768,4 +3749,3 @@ iframe {
 .file-buttons .button {
     margin-right: 10px;
 }
-
