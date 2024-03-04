@@ -3747,7 +3747,7 @@ iframe {
 /* CSS for teaching section */
 .teaching-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 20px;
 }
 
@@ -3757,7 +3757,7 @@ iframe {
     border-radius: 5px;
 }
 
-.teaching-item h4 {
+.teaching-item h5 {
     margin-top: 0;
 }
 
@@ -3768,3 +3768,4 @@ iframe {
 .file-buttons .button {
     margin-right: 10px;
 }
+
