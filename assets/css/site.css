@@ -1,0 +1,143 @@
+/* Site-specific styles, loaded after main.css */
+:root { --accent: #86A7FC; --accent-dark: #2C4DA5; --accent-bg: #F0F4FF; }
+.ic { color: var(--accent); }
+.justify { text-align: justify; }
+.intro-box { background: var(--accent-bg); border-left: 3px solid var(--accent); padding: 10px 12px; border-radius: 8px; font: 300 0.8em/1.4em 'Montserrat', sans-serif; margin-top: 10px; }
+.intro-box div { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 10px; }
+.intro-box div:last-child { margin-bottom: 0; }
+.intro-box i { color: var(--accent); min-width: 20px; }
+.intro-box p { margin: 0; }
+.link-accent { color: var(--accent); }
+.badge { background: var(--accent-bg); color: var(--accent-dark); padding: 4px 8px; border-radius: 4px; display: inline-block; margin: 10px; }
+.more-link { font: 300 0.9em 'Montserrat', sans-serif; margin: 10px 0 0; }
+.note { font-size: 0.85em; color: gray; }
+
+/* Projects: details/summary styled like the original expandable boxes */
+.project { border: 1px solid var(--accent); margin-bottom: 1em; }
+.project summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.project summary::-webkit-details-marker { display: none; }
+.project summary::after { content: "\25B6"; padding-right: 10px; }
+.project[open] summary::after { content: "\25BC"; }
+.project summary h5 { font-size: 1em; margin: 10px; font-family: 'Montserrat', sans-serif; }
+.project .body { padding: 10px; display: flow-root; }
+.project .image.left { float: left; width: 300px; max-width: 40%; margin: 0 1.5em 1em 0; }
+.project .image.left img { display: block; width: 100%; height: auto; }
+.tldr { font-size: 0.9em; color: var(--accent); }
+.meta { font-size: 0.8em; }
+.meta i { margin-right: 4px; }
+.new-tag { font-size: 0.7em; background: var(--accent); color: #fff; border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: middle; }
+@media (max-width: 736px) { .project .image.left { float: none; max-width: 100%; margin: 0 0 1em; } }
+
+/* Teaching */
+.teaching-item h5 { font-size: 1em; margin: 10px; }
+.teaching-item h5.sub { font: 300 0.8em 'Montserrat', sans-serif; }
+.teaching-item p, .teaching-item .button { margin: 10px; }
+
+/* Publications page */
+.pubs { line-height: 1.2; font-size: 0.8em; }
+.pub { margin-bottom: 20px; }
+.pub p { margin: 2px 0; }
+.pub .pub-title { font-size: 1em; font-weight: bold; margin: 0; }
+.pub .code { font-weight: normal; text-decoration: none; color: var(--accent); }
+.pubs-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.pubs-head h2, .pubs-head p { margin: 0; }
+.pubs-head p { font: 0.8em 'Montserrat', sans-serif; color: gray; }
+
+/* Media page (lower tier: plain lists) */
+.link-list { font-size: 0.9em; line-height: 1.5; padding-left: 1.2em; }
+.link-list li { margin-bottom: 0.4em; }
+.link-list span { color: gray; }
+.toggle-btn { background: none; border: none; cursor: pointer; font-size: 0.8em; font-weight: 300; margin: 10px 0; padding: 0; }
+
+/* Featured media (home page) */
+.media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.5em; }
+.media-card { background: #fff; border: 1px solid var(--accent); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(44,77,165,.12); transition: transform .2s, box-shadow .2s; }
+.media-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(44,77,165,.2); }
+.media-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+.media-card .thumb { display: block; border: 0; }
+.media-card .thumb img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.media-card.featured .thumb img { height: 100%; aspect-ratio: auto; min-height: 220px; }
+.media-card .info { padding: 12px 14px; }
+.media-card h5 { font-size: 1em; margin: 0 0 4px; font-family: 'Montserrat', sans-serif; text-transform: none; }
+.media-card .venue { font-size: 0.8em; color: var(--accent-dark); margin: 0 0 6px; }
+.media-card .with { font-size: 0.8em; line-height: 1.4; margin: 0; }
+@media (max-width: 736px) { .media-card.featured { grid-template-columns: 1fr; } }
+
+/* Shared Card Style for Projects & Teaching (matches Media cards) */
+.research-card {
+    background: #fff;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 1.25em 1.5em;
+    margin-bottom: 1.5em;
+    box-shadow: 0 2px 8px rgba(44,77,165,.12);
+    transition: transform .2s, box-shadow .2s;
+}
+
+.research-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(44,77,165,.2);
+}
+
+/* Projects: expandable details styling */
+details.project.research-card {
+    list-style: none;
+}
+details.project.research-card summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+details.project.research-card summary::-webkit-details-marker { display: none; }
+details.project.research-card summary::after { content: "\25B6"; padding-right: 10px; }
+details.project.research-card[open] summary::after { content: "\25BC"; }
+details.project.research-card summary h5 { font-size: 1em; margin: 0; font-family: 'Montserrat', sans-serif; }
+details.project.research-card .body { margin-top: 1em; display: flow-root; }
+
+/* Teaching Grid & Items */
+.teaching-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5em;
+}
+
+.teaching-item.research-card {
+    margin-bottom: 0; /* Handled by grid gap */
+}
+
+.teaching-item h5 {
+    margin-top: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Match Teaching text hierarchy to In the Media cards */
+.teaching-item h5 {
+    font-size: 1em;
+    margin: 0 0 4px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: none;
+}
+
+.teaching-item h5.sub {
+    font-size: 0.8em;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: var(--accent-dark);
+    margin: 0 0 6px;
+}
+
+.teaching-item p {
+    font-size: 0.8em;
+    line-height: 1.4;
+    margin: 0 0 10px;
+}
+
+.teaching-item .file-buttons {
+    margin: 0;
+}
+
+.teaching-item .button {
+    margin: 4px 6px 0 0;
+}
