@@ -1,3 +1,54 @@
+Claude
+index.html
+index.html
+HTML
+main.css
+main.css
+CSS
+site.css
+site.css
+CSS
+media.html
+media.html
+219 lignes
+HTML
+While updating my website, I broke the phone dynamic. As a stellar web developer, can you help me fix it?
+Phone display: 
+the menu bar on top in the header section doesnt display well on phone
+the items in mdeia-grid should just be a list on phone, now it is a squashed list
+the text in the about section is too large
+Web display:
+Should lal the sections have the same left margin? Because the about section does not. If you could help me fix that.
+My understanding is that sote.css only shall be changed. But I paste here the htmls (index and media) and the css (site and main) so you have the whole picture. How can I locally, on my computer, test your suggestions?
+Checking the uploaded files on disk.
+Checking the uploaded files on disk.
+I’ll start by reading the CSS and index.html, since only media.html came through in the chat.
+Exécuté 8 commandes, a lu un fichier, fichiers partagés
+I fixed all four problems in site.css only: your original file with one block appended at the very end. I checked it in a real headless browser at 390, 820, 1440 and 1920px wide. Your images and the JS weren’t available there, so the images showed as broken and I faked the title bar that main.js creates.
+What was wrong
+Header: main.css turns the header into a slide-in side panel at 1024px and below. It pushes the header off-screen with translateX, adds a dark “title bar”, and adds 44px of padding to the page. site.css restyled the header but never switched those behaviours off.
+Media grid: it was repeat(5, 1fr) at every width, which is why the cards looked squashed.
+About text: .about-section was set to 15pt, which beats the smaller body size main.css uses on phones.
+About margin: its container was centred with max-width: 1500px, while every other section uses main.css’s 5% side margins.
+What the fix does
+Header: it cancels the slide-in panel and the title bar. On phones the header shows your name and title, with the menu as one row you swipe sideways. It stays pinned to the top while you scroll.
+Media grid: it has 5 columns on desktop, 3 on tablet and a plain single-column list on phones. The featured card stacks too.
+About text: it follows the body size on tablet and phone, with a slightly smaller heading. Desktop is unchanged.
+Left margin: the About section, the header and all other sections now share the same left edge. I measured 20px at 390px wide, 72px at 1440px and 96px at 1920px, identical in every section.
+Testing locally
+Replace assets/css/site.css with the new file. Keep your folder structure (assets/css, assets/js, images).
+Open a terminal in the site’s root folder (the one containing index.html) and run python3 -m http.server 8000. Then visit http://localhost:8000. You can also just double-click index.html, but the server is closer to how the real site behaves. If you use VS Code, the “Live Server” extension does the same thing.
+For phone view, open Chrome or Edge DevTools (F12, or Cmd+Option+I on Mac) and press Ctrl+Shift+M (Cmd+Shift+M on Mac) for device mode. Pick “iPhone 14” or similar, and drag the width through 1024, 736 and 480px to see the other breakpoints. In Safari, use Develop → Enter Responsive Design Mode.
+Do a hard refresh (Cmd/Ctrl+Shift+R) after each edit so the browser doesn’t serve the old CSS.
+Try it on your real phone too. With the server running, open http://<your-computer's-IP>:8000 on the same Wi-Fi.
+site.css now has three overlapping header/About blocks from your earlier edits, and my block overrides them. Keep my block last. Merging the three into one is a good cleanup for later, but I’d do it after you’ve confirmed everything looks right.
+Site
+Code
+·CSS
+
+
+Claude est une IA et peut commettre des erreurs. Veuillez vérifier les réponses.
+Site · CSS
 /* Global Typography: Merriweather (Headings) + Inter (Body & UI) */
 body, input, select, textarea,
 .about-section,
@@ -13,7 +64,7 @@ body, input, select, textarea,
 .tag {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
-
+ 
 h1, h2, h3, h4, h5,
 #header.site-header .site-brand h1,
 #header.site-header .site-brand h1 a,
@@ -25,7 +76,7 @@ details.project.research-card summary h5,
     font-family: 'Merriweather', Georgia, serif !important;
     font-weight: 700 !important;
 }
-
+ 
 /* Site-specific styles, loaded after main.css */
 :root { --accent: #86A7FC; --accent-dark: #2C4DA5; --accent-bg: #F0F4FF; }
 .ic { color: var(--accent); }
@@ -39,7 +90,7 @@ details.project.research-card summary h5,
 .badge { background: var(--accent-bg); color: var(--accent-dark); padding: 4px 8px; border-radius: 4px; display: inline-block; margin: 10px; }
 .more-link { font: 300 0.9em 'Montserrat', sans-serif; margin: 10px 0 0; }
 .note { font-size: 0.85em; color: gray; }
-
+ 
 /* Projects: details/summary styled like the original expandable boxes */
 .project { border: 1px solid var(--accent); margin-bottom: 1em; }
 .project summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
@@ -55,12 +106,12 @@ details.project.research-card summary h5,
 .meta i { margin-right: 4px; }
 .new-tag { font-size: 0.7em; background: var(--accent); color: #fff; border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: middle; }
 @media (max-width: 736px) { .project .image.left { float: none; max-width: 100%; margin: 0 0 1em; } }
-
+ 
 /* Teaching */
 .teaching-item h5 { font-size: 1em; margin: 10px; }
 .teaching-item h5.sub { font: 300 0.8em 'Montserrat', sans-serif; }
 .teaching-item p, .teaching-item .button { margin: 10px; }
-
+ 
 /* Publications page */
 .pubs { line-height: 1.2; font-size: 0.8em; }
 .pub { margin-bottom: 20px; }
@@ -70,13 +121,13 @@ details.project.research-card summary h5,
 .pubs-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
 .pubs-head h2, .pubs-head p { margin: 0; }
 .pubs-head p { font: 0.8em 'Montserrat', sans-serif; color: gray; }
-
+ 
 /* Media page (lower tier: plain lists) */
 .link-list { font-size: 0.9em; line-height: 1.5; padding-left: 1.2em; }
 .link-list li { margin-bottom: 0.4em; }
 .link-list span { color: gray; }
 .toggle-btn { background: none; border: none; cursor: pointer; font-size: 0.8em; font-weight: 300; margin: 10px 0; padding: 0; }
-
+ 
 /* Featured media (home page) */
 .media-grid { 
     display: grid; 
@@ -94,7 +145,7 @@ details.project.research-card summary h5,
 .media-card .venue { font-size: 0.8em; color: var(--accent-dark); margin: 0 0 6px; }
 .media-card .with { font-size: 0.8em; line-height: 1.4; margin: 0; }
 @media (max-width: 736px) { .media-card.featured { grid-template-columns: 1fr; } }
-
+ 
 /* Shared Card Style for Projects & Teaching (matches Media cards) */
 .research-card {
     background: #fff;
@@ -105,12 +156,12 @@ details.project.research-card summary h5,
     box-shadow: 0 2px 8px rgba(44,77,165,.12);
     transition: transform .2s, box-shadow .2s;
 }
-
+ 
 .research-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(44,77,165,.2);
 }
-
+ 
 /* Projects: expandable details styling */
 details.project.research-card {
     list-style: none;
@@ -127,23 +178,23 @@ details.project.research-card summary::after { content: "\25B6"; padding-right: 
 details.project.research-card[open] summary::after { content: "\25BC"; }
 details.project.research-card summary h5 { font-size: 1em; margin: 0; font-family: 'Montserrat', sans-serif; }
 details.project.research-card .body { margin-top: 1em; display: flow-root; }
-
+ 
 /* Teaching Grid & Items */
 .teaching-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5em;
 }
-
+ 
 .teaching-item.research-card {
     margin-bottom: 0; /* Handled by grid gap */
 }
-
+ 
 .teaching-item h5 {
     margin-top: 0;
     font-family: 'Montserrat', sans-serif;
 }
-
+ 
 /* Match Teaching text hierarchy to In the Media cards */
 .teaching-item h5 {
     font-size: 1em;
@@ -151,7 +202,7 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
     font-family: 'Montserrat', sans-serif;
     text-transform: none;
 }
-
+ 
 .teaching-item h5.sub {
     font-size: 0.8em;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
@@ -159,21 +210,21 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
     color: var(--accent-dark);
     margin: 0 0 6px;
 }
-
+ 
 .teaching-item p {
     font-size: 0.8em;
     line-height: 1.4;
     margin: 0 0 10px;
 }
-
+ 
 .teaching-item .file-buttons {
     margin: 0;
 }
-
+ 
 .teaching-item .button {
     margin: 4px 6px 0 0;
 }
-
+ 
 /* Highlights: tagged, scannable lines */
 .hl { margin: 0 0 0.7em; line-height: 1.4; }
 .hl-more { font-size: 0.8em; color: gray; margin: 0.3em 0 0.5em; line-height: 1.5; }
@@ -182,21 +233,21 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 .tag-talk { background: #fff; color: var(--accent-dark); }
 .tag-media { background: var(--accent); color: #fff; }
 .tag-preprint { background: var(--accent-bg); color: var(--accent-dark); border-color: var(--accent); }
-
-
+ 
+ 
 /* -------------------------------------------------------------------------
    Header + About refresh
    Scoped to #header and the opening About section only.
    The remainder of the Read Only layout and its section styles are untouched.
    ------------------------------------------------------------------------- */
-
+ 
 :root {
 	--site-ink: #26334a;
 	--site-muted: #667085;
 	--site-paper: #fff;
 	--site-line: #e7ebf2;
 }
-
+ 
 /* Horizontal site header */
 #header.site-header {
 	position: sticky;
@@ -220,13 +271,13 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 	box-shadow: 0 3px 18px rgba(31, 45, 68, 0.045);
 	z-index: 1000;
 }
-
+ 
 #header.site-header > header.site-brand {
 	margin: 0;
 	padding: 0;
 	flex: 0 0 auto;
 }
-
+ 
 #header.site-header .site-brand h1 {
 	margin: 0;
 	font-size: 1.05em;
@@ -235,12 +286,12 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 	line-height: 1.2;
 	text-transform: none;
 }
-
+ 
 #header.site-header .site-brand h1 a {
 	color: var(--site-ink);
 	border: 0;
 }
-
+ 
 #header.site-header .site-brand p {
 	margin: 0.25em 0 0;
 	color: var(--site-muted);
@@ -249,12 +300,12 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 	text-align: left;
 	letter-spacing: 0.025em;
 }
-
+ 
 #header.site-header #nav {
 	flex: 1 1 auto;
 	margin: 0;
 }
-
+ 
 #header.site-header #nav ul {
 	display: flex;
 	flex-direction: row;
@@ -265,13 +316,13 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 	padding: 0;
 	list-style: none;
 }
-
+ 
 #header.site-header #nav ul li {
 	border: 0;
 	margin: 0;
 	padding: 0;
 }
-
+ 
 #header.site-header #nav ul li a {
 	display: inline-block;
 	height: auto;
@@ -284,19 +335,19 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 	text-transform: uppercase;
 	transition: color 0.2s ease;
 }
-
+ 
 #header.site-header #nav ul li a:hover,
 #header.site-header #nav ul li a:focus {
 	color: var(--accent-dark);
 	background: transparent;
 }
-
+ 
 #header.site-header > footer.site-social {
 	flex: 0 0 auto;
 	margin: 0;
 	padding: 0;
 }
-
+ 
 #header.site-header .site-social .icons {
 	display: flex;
 	align-items: center;
@@ -304,59 +355,59 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 	margin: 0;
 	padding: 0;
 }
-
+ 
 #header.site-header .site-social .icons li {
 	margin: 0;
 	padding: 0;
 }
-
+ 
 #header.site-header .site-social .icons a {
 	color: #68758a;
 	border: 0;
 	font-size: 0.95em;
 }
-
+ 
 #header.site-header .site-social .icons a:hover {
 	color: var(--accent-dark);
 }
-
+ 
 /* Restore the full-width content canvas after removing the template sidebar. */
 #wrapper {
 	padding-left: 0 !important;
 	margin-left: 0 !important;
 }
-
+ 
 #main {
 	margin-left: 0 !important;
 }
-
+ 
 /* About: keep the existing banner image, but give the introduction a clear hierarchy. */
 .about-section > .about-banner {
 	margin: 0;
 	max-height: 245px;
 	overflow: hidden;
 }
-
+ 
 .about-section > .about-banner img {
 	width: 100%;
 	height: 245px;
 	object-fit: cover;
 	object-position: center 48%;
 }
-
+ 
 .about-section > .container {
 	max-width: 1120px;
 	padding-top: 3.1em;
 	padding-bottom: 3.4em;
 }
-
+ 
 .about-layout {
 	display: grid;
 	grid-template-columns: minmax(0, 1.65fr) minmax(220px, 0.75fr);
 	gap: clamp(2.5em, 6vw, 5.5em);
 	align-items: start;
 }
-
+ 
 .about-copy .about-eyebrow,
 .about-facts .about-facts-label {
 	margin: 0 0 0.9em;
@@ -366,7 +417,7 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 	letter-spacing: 0.16em;
 	text-transform: uppercase;
 }
-
+ 
 .about-copy h2 {
 	max-width: 720px;
 	margin: 0 0 0.65em;
@@ -377,24 +428,24 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 	line-height: 1.12;
 	text-transform: none;
 }
-
+ 
 .about-copy p {
 	max-width: 720px;
 	color: #566174;
 	font-size: 0.91em;
 	line-height: 1.8;
 }
-
+ 
 .about-copy p.about-lede {
 	color: #344258;
 	font-size: 1.08em;
 	line-height: 1.65;
 }
-
+ 
 .about-aside {
 	padding-top: 0.3em;
 }
-
+ 
 .about-portrait {
 	display: block;
 	width: 100%;
@@ -404,17 +455,17 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 	object-position: center 35%;
 	border-radius: 3px;
 }
-
+ 
 .about-facts {
 	margin-top: 1.5em;
 	padding-top: 1.25em;
 	border-top: 1px solid var(--site-line);
 }
-
+ 
 .about-facts .about-facts-label {
 	margin-bottom: 1em;
 }
-
+ 
 .about-facts > div {
 	display: flex;
 	flex-direction: column;
@@ -423,43 +474,43 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 	margin-bottom: 0.85em;
 	border-bottom: 1px solid var(--site-line);
 }
-
+ 
 .about-facts > div:last-child {
 	margin-bottom: 0;
 	border-bottom: 0;
 }
-
+ 
 .about-facts strong {
 	color: var(--site-ink);
 	font-size: 0.83em;
 	font-weight: 700;
 }
-
+ 
 .about-facts span {
 	color: var(--site-muted);
 	font-size: 0.76em;
 	line-height: 1.5;
 }
-
+ 
 .about-links {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.7em 1.5em;
 	margin-top: 1.5em;
 }
-
+ 
 .about-links a {
 	color: var(--accent-dark);
 	border-bottom: 1px solid rgba(44, 77, 165, 0.28);
 	font-size: 0.78em;
 	font-weight: 600;
 }
-
+ 
 .about-links a:hover {
 	color: var(--site-ink);
 	border-bottom-color: var(--site-ink);
 }
-
+ 
 /* Tablet and mobile: compact header, then a scrollable horizontal nav. */
 @media screen and (max-width: 1100px) {
 	#header.site-header {
@@ -477,7 +528,7 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 		display: none;
 	}
 }
-
+ 
 @media screen and (max-width: 736px) {
 	#header.site-header {
 		position: sticky;
@@ -544,7 +595,7 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 		margin-bottom: 0.55em;
 	}
 }
-
+ 
 @media screen and (max-width: 420px) {
 	#header.site-header {
 		padding-left: 1em;
@@ -557,16 +608,16 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 		width: min(58%, 190px);
 	}
 }
-
-
+ 
+ 
 /* =========================================================
    HEADER + ABOUT REFINEMENTS
    Overrides the original template styles without editing
    main.css or changing the other page sections.
    ========================================================= */
-
+ 
 /* ---------- Header ---------- */
-
+ 
 #header.site-header {
   position: sticky !important;
   top: 0;
@@ -588,14 +639,14 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
   box-shadow: 0 2px 12px rgba(25, 45, 80, 0.05);
   z-index: 1000;
 }
-
+ 
 #header.site-header .site-brand {
   flex: 0 0 auto;
   margin: 0 !important;
   padding: 0 !important;
   text-align: left;
 }
-
+ 
 #header.site-header .site-brand h1,
 #header.site-header .site-brand h1 a {
   margin: 0 !important;
@@ -607,7 +658,7 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
   line-height: 1.2;
   text-decoration: none;
 }
-
+ 
 #header.site-header .site-brand p {
   margin: 0.2rem 0 0 !important;
   color: #000 !important;
@@ -615,7 +666,7 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
   font-size: 0.75rem !important;
   line-height: 1.3;
 }
-
+ 
 #header.site-header > nav,
 #header.site-header > nav#nav {
   flex: 1 1 auto;
@@ -624,7 +675,7 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
   padding: 0 !important;
   text-align: right;
 }
-
+ 
 #header.site-header > nav ul {
   display: flex;
   flex-wrap: wrap;
@@ -635,13 +686,13 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
   padding: 0 !important;
   list-style: none;
 }
-
+ 
 #header.site-header > nav ul li {
   display: block;
   margin: 0 !important;
   padding: 0 !important;
 }
-
+ 
 #header.site-header > nav ul li a,
 #header.site-header > nav ul li a:visited {
   display: inline-block;
@@ -657,24 +708,24 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
   white-space: nowrap;
   transition: background 0.2s ease, color 0.2s ease;
 }
-
+ 
 #header.site-header > nav ul li a:hover,
 #header.site-header > nav ul li a.active {
   background: #F0F4FF !important;
   color: #2C4DA5 !important;
 }
-
+ 
 #header.site-header .site-social {
   display: none;
 }
-
+ 
 /* Remove the original sidebar's reserved space. */
 #wrapper {
   padding-right: 0 !important;
 }
-
+ 
 /* ---------- About ---------- */
-
+ 
 .about-section {
   width: 100%;
   color: #000;
@@ -682,7 +733,7 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
   font-size: 15pt;
   line-height: 1.5em;
 }
-
+ 
 .about-section > .container {
   width: 92% !important;
   max-width: 1500px !important;
@@ -690,19 +741,19 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
   margin-right: auto !important;
   padding: 3.5rem 0 4rem !important;
 }
-
+ 
 .about-section .about-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.7fr) minmax(240px, 0.8fr);
   align-items: start;
   gap: clamp(2rem, 5vw, 5rem);
 }
-
+ 
 .about-section .about-copy {
   min-width: 0;
   color: #000;
 }
-
+ 
 .about-section .about-eyebrow {
   margin: 0 0 0.75rem !important;
   color: #3468C0 !important;
@@ -710,7 +761,7 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
   font-weight: 700;
   letter-spacing: 0.12em;
 }
-
+ 
 .about-section .about-copy h2 {
   margin: 0 0 1.25rem !important;
   color: #3468C0 !important;
@@ -719,7 +770,7 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
   font-weight: 700;
   line-height: 1.3 !important;
 }
-
+ 
 .about-section .about-copy p {
   margin: 0 0 1.1rem !important;
   color: #000 !important;
@@ -728,114 +779,230 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
   font-weight: 400;
   line-height: 1.5em !important;
 }
-
+ 
 .about-section .about-copy .about-lede {
   color: #000 !important;
   font-size: 1.05em !important;
   font-weight: 400;
 }
-
+ 
 .about-section .about-links {
   margin-top: 1.5rem;
   color: #3468C0;
 }
-
+ 
 .about-section .about-links a {
   color: #3468C0 !important;
   font-weight: 700;
 }
-
+ 
 .about-section .about-links a:hover {
   color: #86A7FC !important;
 }
-
+ 
 /* ---------- About image and facts ---------- */
-
+ 
 .about-section .about-aside {
     max-width: 350px; /* Add this line to constrain the right-side column to match the image width */
     width: 100%;
 }
-
+ 
 .about-section .about-portrait {
     display: block;
     width: 100%;
-    max-width: 310px;
+    max-width: 350px;
     height: auto;
     margin: 0 auto 1.5rem;
     border-radius: 4px;
 }
-
+ 
 .about-section .about-facts {
     width: 100%;
     color: #000;
     font-size: 0.9em;
     line-height: 1.5;
 }
-
+ 
 .about-section .about-facts p {
   margin-bottom: 0.8rem;
 }
-
+ 
 /* Keep the banner image full-width. */
 .about-section .about-banner {
   width: 100%;
   margin: 0;
 }
-
+ 
 /* ---------- Responsive layout ---------- */
-
+ 
 @media screen and (max-width: 980px) {
   #header.site-header {
     flex-wrap: wrap;
     padding: 0.8rem 4% !important;
   }
-
+ 
   #header.site-header > nav {
     flex-basis: 100%;
     text-align: left;
   }
-
+ 
   #header.site-header > nav ul {
     justify-content: flex-start;
   }
-
+ 
   .about-section .about-layout {
     grid-template-columns: minmax(0, 1fr) minmax(200px, 0.65fr);
     gap: 2rem;
   }
 }
-
+ 
 @media screen and (max-width: 640px) {
   #header.site-header {
     position: relative !important;
     align-items: flex-start;
   }
-
+ 
   #header.site-header > nav ul {
     justify-content: flex-start;
     gap: 0.15rem;
   }
-
+ 
   #header.site-header > nav ul li a {
     padding: 0.4rem 0.45rem !important;
     font-size: 0.72rem !important;
   }
-
+ 
   .about-section > .container {
     width: 90% !important;
     padding: 2.5rem 0 !important;
   }
-
+ 
   .about-section .about-layout {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-
+ 
   .about-section .about-copy h2 {
     font-size: 1.65em !important;
   }
-
+ 
   .about-section .about-aside {
     max-width: 420px;
   }
 }
+ 
+/* =========================================================================
+   RESPONSIVE + ALIGNMENT FIXES  (keep this block at the very END of site.css)
+ 
+   Root causes:
+   1. main.css turns #header into an off-canvas side panel at <=1024px
+      (translateX + fixed + #titleBar + 44px wrapper padding). site.css
+      restyled the header but never switched those mobile behaviours off,
+      so the header was pushed off-screen.
+   2. .media-grid was hard-coded to 5 columns at every screen width.
+   3. .about-section is set to 15pt, which beats the smaller body size
+      main.css uses on tablets/phones.
+   4. The About container was centred (auto margins, max-width 1500px)
+      while every other section uses main.css's 5% left/right margins.
+   ========================================================================= */
+ 
+/* ---------- 1. Header: cancel the template's slide-in panel ---------- */
+#titleBar { display: none !important; }              /* the dark hamburger bar */
+ 
+#header.site-header,
+body.header-visible #header.site-header {
+  transform: none !important;
+  -webkit-transform: none !important;
+  transition: none;
+  right: auto !important;
+}
+#wrapper,
+body.header-visible #wrapper {
+  transform: none !important;
+  -webkit-transform: none !important;
+  padding-top: 0 !important;                          /* was 44px for the title bar */
+}
+ 
+/* overflow-x:hidden on html AND body (main.css) breaks position:sticky.
+   "clip" hides sideways overflow without creating a scroll container. */
+@media screen and (max-width: 1024px) {
+  html, body { overflow-x: clip; }
+}
+ 
+/* Align header edges with the 5% content margin */
+#header.site-header { padding-left: 5% !important; padding-right: 5% !important; }
+ 
+/* ---------- 1b. Header on phones: brand row + swipeable nav row ---------- */
+@media screen and (max-width: 736px) {
+  #header.site-header {
+    position: sticky !important;                      /* undo the 640px "relative" */
+    display: block;
+    padding-top: 0.6rem !important;
+    padding-bottom: 0.2rem !important;
+  }
+  #header.site-header > header.site-brand { margin-bottom: 0.2rem !important; }
+  #header.site-header .site-brand h1,
+  #header.site-header .site-brand h1 a { font-size: 1.05rem !important; }
+  #header.site-header .site-brand p { font-size: 0.7rem !important; }
+ 
+  #header.site-header > nav,
+  #header.site-header > nav#nav {
+    width: 100% !important;
+    text-align: left;
+    overflow-x: auto;                                 /* one row, swipe sideways */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  #header.site-header > nav::-webkit-scrollbar { display: none; }
+ 
+  #header.site-header > nav ul {
+    flex-wrap: nowrap;
+    width: max-content;
+    justify-content: flex-start;
+    gap: 0.1rem;
+  }
+  #header.site-header > nav ul li a {
+    padding: 0.5rem 0.6rem !important;
+    font-size: 0.72rem !important;
+    white-space: nowrap;
+  }
+}
+ 
+/* ---------- 2. In the Media grid ---------- */
+.media-card { min-width: 0; }                         /* lets cards shrink properly */
+ 
+@media screen and (max-width: 1024px) {
+  .media-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media screen and (max-width: 736px) {                /* phone: simple vertical list */
+  .media-grid { grid-template-columns: 1fr; gap: 1.1em; }
+  .media-card.featured { grid-template-columns: 1fr; }
+  .media-card.featured .thumb img { height: auto; min-height: 0; aspect-ratio: 16 / 9; }
+}
+ 
+/* ---------- 3. About text size on tablet/phone ---------- */
+@media screen and (max-width: 1024px) {
+  .about-section { font-size: 1em; }                  /* inherit body size (12pt) not 15pt */
+  .about-section .about-copy .about-lede { font-size: 1.05em !important; }
+}
+@media screen and (max-width: 736px) {
+  .about-section { font-size: 0.95em; line-height: 1.5; }
+  .about-section .about-copy h2 { font-size: 1.5em !important; line-height: 1.25 !important; }
+  .about-section .about-copy p,
+  .about-section .about-copy .about-lede { line-height: 1.55em !important; }
+  .about-section .about-facts { font-size: 0.85em; }
+}
+ 
+/* ---------- 4. Same left/right margin for every section ---------- */
+.about-section > .container {
+  width: auto !important;
+  max-width: calc(100%) !important;                   /* same as main.css .container */
+  margin-left: 5% !important;
+  margin-right: 5% !important;
+}
+@media screen and (max-width: 480px) {
+  .about-section > .container { max-width: calc(100% - 3.375em) !important; }
+}
+ 
+Claude a terminé sa réponse.
+c
