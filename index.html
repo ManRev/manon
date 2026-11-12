@@ -14,34 +14,33 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <link rel="stylesheet" href="assets/css/site.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="is-preload">
 
 <!-- Header -->
-<section id="header">
-	<header>
-		<span class="image avatar"><img src="images/manon-s1.jpg" alt="Portrait of Manon Revel" /></span>
-		<h1 id="logo"><a href="#">Manon Revel</a></h1>
-		<p style="text-align:center">Researcher @ Google DeepMind</p>
+<section id="header" class="site-header">
+	<header class="site-brand">
+		<h1 id="logo"><a href="#one">Manon Revel</a></h1>
+		<p>Research Scientist <span aria-hidden="true">·</span> Google DeepMind</p>
 	</header>
-	<nav id="nav">
+	<nav id="nav" class="site-nav" aria-label="Main navigation">
 		<ul>
-			<li><a href="#one">About</a></li>
+			<li><a href="">About</a></li>
 			<li><a href="#news">Highlights</a></li>
 			<li><a href="#four">Projects</a></li>
 			<li><a href="#media">In the Media</a></li>
 			<li><a href="#teaching">Teaching</a></li>
 			<li><a href="media.html">Publications</a></li>
-			<li><a href="#cv">CV</a></li>
+			<!--<li><a href="#cv">CV</a></li>-->
 		</ul>
 	</nav>
-	<footer>
+	<footer class="site-social">
 		<ul class="icons">
-			<li><a href="https://www.linkedin.com/in/manon-revel-1a6285132/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-			<li><a href="https://github.com/ManRev" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-			<li><a href="https://scholar.google.com/citations?user=dEvt4JoAAAAJ&amp;hl=en" target="_blank" class="icon solid fa-graduation-cap"><span class="label">Google Scholar</span></a></li>
+			<li><a href="https://www.linkedin.com/in/manon-revel-1a6285132/" target="_blank" rel="noopener noreferrer" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+			<li><a href="https://github.com/ManRev" target="_blank" rel="noopener noreferrer" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+			<li><a href="https://scholar.google.com/citations?user=dEvt4JoAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer" class="icon solid fa-graduation-cap"><span class="label">Google Scholar</span></a></li>
 		</ul>
 	</footer>
 </section>
@@ -50,18 +49,32 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <div id="main">
 
 <!-- About -->
-<section>
-	<div class="image main" data-position="center"><img id="randomImage" src="images/DALLE.png" alt="" /></div>
+<section class="about-section">
+	<div class="image main about-banner" data-position="center"><img id="randomImage" src="images/DALLE.png" alt="" /></div>
 	<div class="container">
-		<header class="major"><h2 id="one" style="text-align:center">Welcome!</h2></header>
-		<div class="intro-box">
-			<div><i class="fa fa-briefcase"></i><p>Senior Research Scientist, Google DeepMind</p></div>
-			<div><i class="fa fa-graduation-cap"></i><p>PhD in <a href="https://stat.mit.edu/academics/idps/idps-social-engineering-systems/" target="_blank">Social and Engineering Systems and Statistics</a>, MIT · Postdoctoral Fellow, Harvard · Postdoctoral Research Scientist, Meta FAIR</p></div>
-			<div><i class="fa fa-lightbulb-o"></i><p>Interests: probabilistic modeling · multi-agent decision theory · network science · computational social choice · reinforcement learning from human feedback</p></div>
+		<div class="about-layout">
+			<div class="about-copy">
+				<h2 id="one">Researching collective agency</h2>
+				<p class="about-lede">Hi, I'm Manon. I'm a Senior Research Scientist at Google DeepMind. I am fascinated by collaborative decision-making in humans. I research how collective agency evolves in a networked, AI-mediated world, from how people make sense of information online to how they deliberate offline.</p>
+				<p>My work bridges mathematical frameworks with large-scale empirical studies. During my PhD at MIT, I developed mathematical theories and led the first laboratory experiments evaluating liquid democracy—a framework where individuals delegate decisions dynamically using second-order knowledge (what I know about what you know).</p>
+				<p>I was a Doctoral Fellow at the Harvard Kennedy School, led an AI and democracy research agenda at the Berkman Klein Center and did a postdoc at the Fundamental AI Research Labat Meta. I have taught at MIT and the University of Notre Dame, and interned at Palantir, the Center for Strategic and International Studies, and Bell Labs.</p>
+				<div class="about-links" aria-label="Professional links">
+					<a href="https://scholar.google.com/citations?user=dEvt4JoAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar <span aria-hidden="true">↗</span></a>
+					<a href="https://www.linkedin.com/in/manon-revel-1a6285132/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+					<a href="pdf/CV_ManonRevel.pdf">Curriculum vitae <span aria-hidden="true">↗</span></a>
+				</div>
+			</div>
+			<aside class="about-aside" aria-label="Professional background">
+				<img class="about-portrait" src="images/manoner.jpg" alt="Portrait of Manon Revel" />
+				<div class="about-facts">
+					<p class="about-facts-label">Background</p>
+					<div><strong>MIT</strong><span>PhD, Social and Engineering Systems and Statistics</span></div>
+					<div><strong>Harvard Berkman Klein Center</strong><span>Postdoctoral Fellow</span></div>
+					<div><strong>Meta FAIR</strong><span>Postdoctoral Research Scientist</span></div>
+				</div>
+			</aside>
 		</div>
-		<p>Hi! I'm Manon. I research collaborative decision-making in humans. My work bridges mathematical frameworks with large-scale empirical studies to study collective agency in a networked, AI-mediated world.</p>
-		<p>During my PhD at MIT, I developed mathematical theories and led the first laboratory experiments evaluating liquid democracy—a scheme where individuals delegate decisions dynamically using second-order knowledge (what I know about what you know).</p>
-		<p>Previously, I was a Doctoral Fellow at the Harvard Kennedy School and started and led an AI and democracy research agenda at the Berkman Klein Center. I have taught at MIT and the University of Notre Dame, and interned at Palantir, the Center for Strategic and International Studies, and Bell Labs.</p>	</div>
+	</div>
 </section>
 
 <!-- Highlights -->
@@ -111,9 +124,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 			<div class="body">
 				<p class="tldr">tl;dr: A brief interaction with a non-directive AI reflector prior to discussion improves group deliberation quality, outgroup empathy, and understanding.</p>
 				<p><span class="image left"><img src="images/air.png" alt="Diagram of the AI reflection pipeline" loading="lazy" /></span>
-				Our work tests a non-directive AI reflector (AIR) designed to scaffold private inner reflection before group conversations. In a randomized experiment with 1,173 participants across 391 groups, individuals spent 7 minutes watching a control video, writing a reflection statement, or chatting with AIR (a prompted gemma-4-31b-it model asking non-directive questions).</p>
+				<a href="https://arxiv.org/pdf/2610.37862" target="_blank"><i class="fa fa-file-text-o fa-fw ic"></i>Our work</a> tests a non-directive AI reflector (AIR) designed to scaffold private inner reflection before group conversations. In a randomized experiment with 1,173 participants across 391 groups, individuals spent 7 minutes watching a control video, writing a reflection statement, or chatting with AIR (a prompted gemma-4-31b-it model asking non-directive questions).</p>
 				<p>AIR significantly improved group discourse quality compared to control (Cohen's d = 0.31) and solitary reflection (d = 0.27), particularly in disagreeing groups, while enhancing outgroup empathy. Solitary reflection offered no benefit over control and slightly polarized stances (d = 0.14). Total opinion change was uniform across conditions, meaning AIR shifted the <em>timing</em> of reconsideration rather than steering opinions.</p>
-				<p><a href="https://arxiv.org/pdf/2610.37862" target="_blank"><i class="fa fa-file-text-o fa-fw ic"></i>Read the paper</a>.</p>
 				<p class="meta"><i class="fas fa-users ic"></i>Joint work with Haiwen Li, Crystal Qian, Ben Usman, Stephanie Chan, Michiel Bakker, Srivignesh Rajendran, Avneesh Sud, Thomas Leung, Nikki Hariri, John Canny, and Nick Dufour</p>
 			</div>
 		</details>
@@ -220,6 +232,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 		<p class="with">with chess master Garry Kasparov and former minister Hubert Védrine</p></div>
 </article>
 		</div>
+		<p></p>
 		<p class="more-link"><a href="media.html">More talks and interviews →</a></p>
 	</div>
 </section>
@@ -268,11 +281,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 </section>
 -->
 <!-- CV -->
-<section id="cv">
+<!-- <section id="cv">
 	<div class="container">
 		<a href="pdf/CV_ManonRevel.pdf" class="button icon solid fa-download">CV (Updated: 2026)</a>
 	</div>
 </section>
+-->
 
 <section id="footer">
 	<ul class="copyright">
