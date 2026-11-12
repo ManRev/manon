@@ -141,3 +141,12 @@ details.project.research-card .body { margin-top: 1em; display: flow-root; }
 .teaching-item .button {
     margin: 4px 6px 0 0;
 }
+
+/* Highlights: tagged, scannable lines */
+.hl { margin: 0 0 0.7em; line-height: 1.4; }
+.hl-more { font-size: 0.8em; color: gray; margin: 0.3em 0 0.5em; line-height: 1.5; }
+.tag { display: inline-block; min-width: 5.5em; text-align: center; font: 300 0.65em 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 8px; margin-right: 0.7em; border-radius: 4px; border: 1px solid var(--accent); vertical-align: middle; }
+.tag-paper { background: var(--accent-bg); color: var(--accent-dark); }
+.tag-talk { background: #fff; color: var(--accent-dark); }
+.tag-media { background: var(--accent); color: #fff; }
+.tag-preprint { background: var(--accent-bg); color: var(--accent-dark); border-color: var(--accent); }
